@@ -1,0 +1,15 @@
+---
+workspace:
+  base: /go
+  path: src/github.homedepot.com/joshq/willitgo
+
+pipeline:
+  build:
+    image: golang:1
+    pull: true
+    environment:
+      - CGO_ENABLED=0
+      - GO111MODULE=on
+    commands:
+      - go test -cover ./...
+      - go build -ldflags '-s -w'
